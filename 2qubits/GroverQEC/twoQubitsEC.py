@@ -33,7 +33,7 @@ q = QuantumRegister(18,'q')
 c = ClassicalRegister(18,'c')
 qc = QuantumCircuit(q,c)
 
-QiskitRuntimeService.save_account(channel="ibm_quantum", token="Your Token Here", overwrite=True, set_as_default=True)
+QiskitRuntimeService.save_account(channel="ibm_quantum", token="d6d7e69ec282ec547cb07afcbd9096ded018155024933c2bc73a932e0dba016ae5fc23d4493ae5cf78908d4857dfa9ec56da4eacf24ddb1e3bb63d9efd9bfae0", overwrite=True, set_as_default=True)
 service = QiskitRuntimeService(channel='ibm_quantum')
 backend = service.least_busy(min_num_qubits=127)
 
@@ -298,19 +298,19 @@ qc.measure(q[1], 1)
 
 """Draw"""
 
-qc.draw('mpl', fold=False, idle_wires=False)
+#qc.draw('mpl', fold=False, idle_wires=False)
 
 """Run on IBM Quantum Machine"""
 
-sampler = Sampler(mode=backend)
-sampler.options.default_shots = 1_024
-job = sampler.run([circuit_qc])
-results = job.result()
+#sampler = Sampler(mode=backend)
+#sampler.options.default_shots = 1_024
+#job = sampler.run([circuit_qc])
+#results = job.result()
 
 """Plot Results"""
 
-dist = results[0].data.c.get_counts()
-plot_distribution(dist)
+#dist = results[0].data.c.get_counts()
+#plot_distribution(dist)
 
 """Run Simulator"""
 
@@ -318,4 +318,5 @@ simulator = AerSimulator(noise_model=noise_model)
 result = simulator.run(qc).result()
 
 counts = result.get_counts(qc)
-plot_histogram(counts)
+#plot_histogram(counts)
+print(counts)
