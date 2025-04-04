@@ -1,6 +1,8 @@
 # Grover's Algorithm with Shor's Error Correction
 Hannah Tiffany
+
 Capstone Project
+
 Spring 2025
 
 # Description
