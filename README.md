@@ -8,9 +8,15 @@ Running this project requires Python for the logic, Jupyter Notebook for visuali
 
 # Resources used
 IBM Quantum:
+
 https://www.ibm.com/quantum
+
 Grover's Algorithm:
+
 https://learning.quantum.ibm.com/course/fundamentals-of-quantum-algorithms/grovers-algorithm
+
 https://learning.quantum.ibm.com/tutorial/grovers-algorithm
+
 Shor's Code:
+
 https://quantumcomputinguk.org/tutorials/quantum-error-correction-shor-code-in-qiskit
