@@ -33,7 +33,7 @@ q = QuantumRegister(18,'q')
 c = ClassicalRegister(2,'c')
 qc = QuantumCircuit(q,c)
 
-QiskitRuntimeService.save_account(channel="ibm_quantum", token="Your token here", overwrite=True, set_as_default=True)
+QiskitRuntimeService.save_account(channel="ibm_quantum", token="Your Token Here", overwrite=True, set_as_default=True)
 service = QiskitRuntimeService(channel='ibm_quantum')
 backend = service.least_busy(min_num_qubits=127)
 
@@ -70,6 +70,8 @@ qc.cx(q[13], q[17])
 qc.barrier()
 
 """Grover's Algorithm"""
+
+qc.h(range(18))
 
 qc.h(q[0])
 qc.h(q[1])
@@ -224,6 +226,8 @@ qc.x(q[17])
 qc.h(q[16])
 qc.h(q[17])
 
+qc.h(range(18))
+
 qc.barrier()
 
 """Decoding"""
@@ -266,9 +270,6 @@ qc.barrier()
 qc.measure(q[0], 0)
 qc.measure(q[1], 1)
 
-"""Draw"""
-
-qc.draw('mpl', fold=False, idle_wires=False)
 
 """Run on IBM Quantum Machine"""
 
@@ -277,21 +278,13 @@ sampler.options.default_shots = 1_024
 job = sampler.run([circuit_qc])
 results = job.result()
 
-"""Plot Results"""
-
-dist = results[0].data.c.get_counts()
-plot_distribution(dist)
 
 """Run Simulator"""
 
+#Noisy
 simulator = AerSimulator(noise_model=noise_model)
 result = simulator.run(qc).result()
 
-counts = result.get_counts(qc)
-plot_histogram(counts)
-
+#Noiseless
 simulator = AerSimulator()
 result = simulator.run(qc).result()
-
-counts = result.get_counts(qc)
-plot_histogram(counts)
